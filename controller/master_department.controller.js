@@ -5,6 +5,7 @@ const { models } = require('../models');
 const { QueryTypes } = require('sequelize');
 
 
+const PPIS_PF_DETAILS = require('../models/PPIS_PF_DETAILS');
 
 const errorHandler = (res, error, status = 400) => {
   res.status(status).json({ msg: error.message });
@@ -77,5 +78,17 @@ const fetchPfContributaion = async (req, res) => {
 };
 
 
-module.exports = { departmentMaster,fetchbadge ,fetchPfContributaion, fetchBadgeNo};
+
+const createPfDetails = async (req, res) => {
+    try {
+        const newDetail = await PPIS_PF_DETAILS.create(req.body);
+        res.json(newDetail);
+        res.status(201).json(newBadge);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
+module.exports = { departmentMaster,fetchbadge ,fetchPfContributaion, fetchBadgeNo, createPfDetails};
 

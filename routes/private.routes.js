@@ -10,7 +10,7 @@ router.get("/badge", masterController.fetchbadge);
 router.get("/pfContributaion", masterController.fetchPfContributaion);
 
 
-// router.post("/pfdetails", masterController.createPfDetails);
+router.post("/pfdetails", masterController.createPfDetails);
 
 module.exports = router;
 
