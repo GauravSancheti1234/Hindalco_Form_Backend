@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Department = require('../models/department');
-const masterController = require('../controller/master_department.controller');
+const Department = require("../models/department");
+const masterController = require("../controller/master_department.controller");
 
 router.post("/departments", masterController.departmentMaster);
+router.get("/staffchecks/:code/:name", masterController.StaffMasters_Code);
 
 module.exports = router;
-
