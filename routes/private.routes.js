@@ -3,7 +3,9 @@ const router = express.Router();
 
 const  masterController = require('../controller/master_department.controller');
 
-router.post("/departments", masterController.departmentMaster);
+router.get("/designation", masterController.DesignationMaster)
+
+
 
 module.exports = router;
 

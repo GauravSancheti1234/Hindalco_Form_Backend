@@ -2,27 +2,19 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
 const Department = sequelize.define('Department', {
-    dept_mr_dept_code: {
-    type: DataTypes.STRING(3),
+  desg_mr_desg_code: {
+    type: DataTypes.STRING(7),
     allowNull: false,
     primaryKey: true
   },
-  dept_mr_dept_short_desc: {
-    type: DataTypes.STRING(4),
+  desg_mr_desg_desc: {
+    type: DataTypes.STRING(50),
     allowNull: false
   },
-  dept_mr_dept_desc: {
-    type: DataTypes.STRING(20),
-    allowNull: false
-  },
-  dept_mr_po_desc: {
-    type: DataTypes.STRING(2),
-    allowNull: true
-  }
 }, {
-    tableName: 'ppis_dept_master',
-    timestamps: false,
-    schema: 'ppis' 
+  tableName: 'ppis_designation_master',
+  timestamps: false,
+  schema: 'ppis'
 });
 
 
