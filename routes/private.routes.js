@@ -3,9 +3,7 @@ const router = express.Router();
 
 const  masterController = require('../controller/master_department.controller');
 
-router.get("/designation", masterController.DesignationMaster)
-
-
+router.post("/departments", masterController.departmentMaster);
 
 module.exports = router;
 
