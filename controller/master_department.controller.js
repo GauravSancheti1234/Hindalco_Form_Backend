@@ -29,20 +29,39 @@ const departmentMaster = async (req, res) => {
 
 const StaffMasters_Code = async (req, res) => {
   try {
-    const { code, name } = req.params;
+    let code;
+    let name;
+
+    if (req.params.code) {
+      code = req.params.code;
+    } else if (req.query.code) {
+      code = req.query.code;
+    } else if (req.body.code) {
+      code = req.body.code;
+    } else {
+      return res.status(400).json({ error: "Code parameter is missing" });
+    }
+
+    if (req.query.name) {
+      name = req.query.name;
+    } else if (req.body.name) {
+      name = req.body.name;
+    }
+
     if (!code || !name) {
       return res
         .status(400)
-        .json({ error: "Both manager code and employee name are required" });
+        .json({ error: "Code parameter is missing or invalid" });
     }
+
     const staffDetails = await Staff_one.findOne({
-      where: { staff_dtl_mgr_code: code, staff_dtl_emp_id: name },
+      where: { staff_dtl_mgr_code: code },
       attributes: [
-        "staff_dtl_emp_id",
         "staff_dtl_emp_comp_code",
+        "staff_dtl_mgr_code",
         "staff_dtl_emp_email",
-        "staff_dtl_saturday_half_flag",
         "staff_dtl_coff_flag",
+        "staff_dtl_saturday_half_flag",
       ],
     });
 
@@ -52,7 +71,7 @@ const StaffMasters_Code = async (req, res) => {
         .json({ error: "Staff not found for the provided manager code" });
     }
 
-    res.status(200).json("Success");
+    res.status(200).json(staffDetails);
   } catch (error) {
     console.error("Error fetching staff details:", error);
     res.status(500).json({ error: "Internal Server Error" });

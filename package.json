@@ -1,7 +1,6 @@
 {
   "name": "hindalco_form_backend",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -22,5 +21,7 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {},
+  "description": ""
 }

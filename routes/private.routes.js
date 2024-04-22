@@ -4,6 +4,6 @@ const Department = require("../models/department");
 const masterController = require("../controller/master_department.controller");
 
 router.post("/departments", masterController.departmentMaster);
-router.get("/staffchecks/:code/:name", masterController.StaffMasters_Code);
+router.get("/staffchecks", masterController.StaffMasters_Code);
 
 module.exports = router;
